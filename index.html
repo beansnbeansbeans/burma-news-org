@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Burma News Archive — HMA Project</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet"/>
+        <style>:root { --bg: #0e0d0b; --surface: #17150f; --border: #2e2a22; --gold: #c9973a; --gold-dim: #8a6525; --amber: #e8b84b; --text: #e8e0d0; --muted: #8c8070; --red: #c94a3a; } *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } body { background: var(--bg); color: var(--text); font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.7; overflow-x: hidden; } /* ── NOISE OVERLAY ── */body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size: 200px 200px; pointer-events: none; z-index: 0; opacity: 0.45; } /* ── DATELINE TICKER ── */.ticker { background: var(--gold); color: #0e0d0b; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; font-weight: 500; overflow: hidden; white-space: nowrap; position: sticky; top: 0; z-index: 100; padding: 5px 0; } .ticker-inner { display: inline-block; animation: scroll 30s linear infinite; } .ticker-inner span { margin: 0 4em; } @keyframes scroll { from {  transform: translateX(0); }  to {  transform: translateX(-50%); } } /* ── NAV ── */nav { position: sticky; top: 27px; z-index: 90; background: rgba(14,13,11,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 max(2rem, 5vw); height: 60px; } .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 900; letter-spacing: 0.02em; color: var(--amber); text-decoration: none; } .nav-logo span { color: var(--muted); font-weight: 400; } nav ul { list-style: none; display: flex; gap: 2rem; } nav a { color: var(--muted); text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; } nav a:hover { color: var(--amber); } /* ── MASTHEAD ── */.masthead { position: relative; z-index: 1; padding: 6rem max(2rem, 8vw) 4rem; border-bottom: 1px solid var(--border); max-width: 1100px; margin: 0 auto; } .masthead-kicker { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; } .masthead h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 7vw, 6rem); font-weight: 900; line-height: 1.0; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.5rem; } .masthead h1 em { font-style: italic; color: var(--amber); } .masthead-rule { width: 80px; height: 3px; background: var(--gold); margin: 2rem 0; } .masthead-sub { max-width: 640px; color: #bab0a0; font-size: 1.1rem; font-weight: 300; line-height: 1.8; } .masthead-meta { display: flex; gap: 3rem; margin-top: 3rem; flex-wrap: wrap; } .meta-item { text-align: center; } .meta-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--amber); display: block; } .meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); } /* ── SECTION SHELL ── */section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 5rem max(2rem, 8vw); border-bottom: 1px solid var(--border); } section:last-child { border-bottom: none; } .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; } h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.5rem; } p { margin-bottom: 1.2rem; color: #bab0a0; } p:last-child { margin-bottom: 0; } /* ── ABOUT GRID ── */.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; } @media (max-width: 700px) { .about-grid {  grid-template-columns: 1fr; } } .about-card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--gold); padding: 2rem; } .about-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); } .about-card p { font-size: 0.95rem; } /* ── ARCHIVE CTA ── */.archive-cta { margin-top: 2.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; } .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.2s; cursor: pointer; border: none; } .btn-primary { background: var(--gold); color: #0e0d0b; } .btn-primary:hover { background: var(--amber); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(201,151,58,0.35); } .btn-outline { background: transparent; border: 1px solid var(--gold-dim); color: var(--gold); } .btn-outline:hover { border-color: var(--gold); color: var(--amber); background: rgba(201,151,58,0.07); } .btn-coffee { background: #FFDD00; color: #1a1200; font-size: 13px; padding: 0.85rem 2rem; } .btn-coffee:hover { background: #ffe833; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(255,220,0,0.3); } /* ── FEED FORM ── */.form-grid { margin-top: 2.5rem; display: grid; gap: 1.25rem; max-width: 640px; } .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; } @media (max-width: 560px) { .form-row {  grid-template-columns: 1fr; } } label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; } input, select, textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 0.7rem 1rem; outline: none; transition: border-color 0.2s; appearance: none; } input:focus, select:focus, textarea:focus { border-color: var(--gold); } select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M0 0l6 7 6-7z' fill='%238a6525'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; } textarea { resize: vertical; min-height: 90px; } .form-note { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 0.5rem; } /* ── PLATFORM CHIPS ── */.platform-chips { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; } .chip { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; padding: 0.3rem 0.8rem; border: 1px solid var(--border); color: var(--muted); display: flex; align-items: center; gap: 0.4rem; } .chip.fb { border-color: #3b5998; color: #7b9fd4; } .chip.tw { border-color: #1da1f2; color: #6bc5f8; } .chip.tg { border-color: #2ca5e0; color: #6dcaf4; } .chip.rss { border-color: #f26522; color: #f59460; } /* ── FUND SECTION ── */.fund-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start; } @media (max-width: 760px) { .fund-layout {  grid-template-columns: 1fr;  gap: 2rem; } } .fund-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 2rem; } .fund-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; } .cost-list { list-style: none; margin: 1rem 0; } .cost-list li { display: flex; justify-content: space-between; border-bottom: 1px dotted var(--border); padding: 0.5rem 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); } .cost-list li:last-child { border-bottom: none; } .cost-list .cost-val { color: var(--gold); } .thanks-block { background: linear-gradient(135deg, var(--surface) 0%, #1f1a11 100%); border: 1px solid var(--border); border-top: 3px solid var(--amber); padding: 2rem; } .thanks-block h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; margin-bottom: 0.75rem; color: var(--amber); } .thanks-block p { font-size: 0.9rem; line-height: 1.7; } .heart { color: var(--red); } .donate-stack { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; } /* ── FOOTER ── */footer { position: relative; z-index: 1; background: var(--surface); border-top: 1px solid var(--border); padding: 3rem max(2rem, 8vw); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; } .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: var(--amber); } footer p { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); margin: 0; } footer a { color: var(--gold-dim); text-decoration: none; } footer a:hover { color: var(--gold); } /* ── DECORATIVE RULE ── */.ornament { display: flex; align-items: center; gap: 1rem; margin: 2rem 0; } .ornament::before, .ornament::after { content: ''; flex: 1; height: 1px; background: var(--border); } .ornament-inner { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--gold-dim); } /* ── SUCCESS MESSAGE ── */.success-msg { display: none; background: rgba(201,151,58,0.1); border: 1px solid var(--gold-dim); padding: 1rem 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gold); margin-top: 1rem; } /* ── SCROLL FADE-IN ── */.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; } .reveal.visible { opacity: 1; transform: none; }</style>
+    </head>
+    <body>
+        <!-- TICKER -->
+        <div class="ticker" aria-hidden="true">
+            <span class="ticker-inner"> <span>BURMA NEWS ARCHIVE</span> <span>·</span> <span>Community-Powered Monitoring</span> <span>·</span> <span>Facebook · Twitter · Telegram · RSS</span> <span>·</span> <span>Crowdfunded & Open Access</span> <span>·</span> <span>BURMA NEWS ARCHIVE</span> <span>·</span> <span>Community-Powered Monitoring</span> <span>·</span> <span>Facebook · Twitter · Telegram · RSS</span> <span>·</span> <span>Crowdfunded & Open Access</span> <span>·</span> </span>
+        </div>
+        <!-- NAV -->
+        <nav>
+            <a href="/" class="nav-logo">Burma News <span>/ Archive</span></a>
+            <ul>
+                <li>
+                    <a href="/howto.html">HowTo</a>
+                </li>
+                <li>
+                    <a href="https://news.burma-news.org/">Archive</a>
+                </li>
+                <li></li>
+                <li>
+                    <a href="https://www.gofundme.com/f/help-build-a-myanmar-news-translation-archiving-platform?attribution_id=sl:6dad3c65-64d1-4244-92a0-83281ca5f734&lang=en_GB&ts=1760373757&utm_campaign=man_sharesheet_dash&utm_content=amp13_t1&utm_medium=customer&utm_source=copy_link">Support</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- MASTHEAD -->
+        <header class="masthead reveal">
+            <p class="masthead-kicker">Burma News Project &#8212; Community News Initiative</p>
+            <h1>The <em>Burma</em><br>News Archive</h1>
+            <div class="masthead-rule"></div>
+            <p class="masthead-sub">A community-powered platform monitoring, translating, and archiving news from Burma (Myanmar) across social media and news feeds &#8212; in one open, searchable place. Built with crowdfunded support. Sustained by people who care. Support independent Burmese media by funding them!</p>
+            <div class="masthead-meta">
+                <div class="meta-item">
+                    <span class="meta-num">24/7</span>
+                    <span class="meta-label">Monitoring</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-num">4+</span>
+                    <span class="meta-label">Platforms</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-num">EN / MY</span>
+                    <span class="meta-label">Languages</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-num">Open</span>
+                    <span class="meta-label">Access</span>
+                </div>
+            </div>
+        </header>
+        <!-- ABOUT -->
+        <section id="about" class="reveal">
+            <p class="section-label">About the Project</p>
+            <h2>What is the Burma News Archive?</h2>
+            <p>
+      Burma News Archive is an independent monitoring and archiving project dedicated to tracking news and information emerging from Burma (Myanmar). It aggregates content from Facebook pages, Twitter/X accounts, Telegram channels, and RSS feeds — sources that are often fragmented, fleeting, or difficult to search — into a single, persistent archive. </p>
+            <p>
+      The platform provides automated translation between Burmese and English, enabling researchers, journalists, civil society organisations, and the wider diaspora community to follow events on the ground without language barriers. All archived content is timestamped, tagged, and fully searchable. </p>
+            <div class="about-grid">
+                <div class="about-card reveal">
+                    <h3>📡 Multi-Platform Aggregation</h3>
+                    <p>We pull from Facebook public pages, Twitter/X accounts, Telegram channels, and standard RSS feeds. If it&apos;s public and relevant, it can be archived. We will do our best.</p>
+                </div>
+                <div class="about-card reveal">
+                    <h3>🔍 Searchable Archive</h3>
+                    <p>Every item is stored with its original source, timestamp, and language. Full-text search lets you find what you need, even months or years later.</p>
+                </div>
+                <div class="about-card reveal">
+                    <h3>🌐 Burmese–English Translation</h3>
+                    <p>Automated translation tools help surface Burmese-language content to international audiences — and vice versa — in near real-time.</p>
+                </div>
+                <div class="about-card reveal">
+                    <h3>🤝 Community-Powered</h3>
+                    <p>New feeds are added via community submissions. If you know a source we should be watching, you can submit it directly through this site.</p>
+                </div>
+            </div>
+        </section>
+        <!-- ARCHIVE -->
+        <section id="archive" class="reveal">
+            <p class="section-label">The Archive</p>
+            <h2>Browse all archived news</h2>
+            <p>
+      The archive holds a continuously growing record of news, updates, and dispatches from Burma — spanning political developments, humanitarian conditions, armed conflict, diaspora voices, and civil society reporting. All content is free to access. </p>
+            <p>
+      Use the search interface to filter by date, source, platform, language, or keyword. You can also browse by channel or tag for a more curated view. </p>
+            <div class="archive-cta">
+                <a href="https://news.burma-news.org/" class="btn btn-primary">→ Browse the Archive</a>
+            </div>
+        </section>
+        <!-- SUBMIT FEED -->
+        <section id="submit" class="reveal">
+            <p class="section-label">Submit a Feed</p>
+            <h2>Know a source we should monitor?</h2>
+            <p>
+      The archive grows through community contribution. If you follow a Facebook page, Twitter/X account, Telegram channel, or RSS feed that carries relevant Burma news, submit it below. Our team will review all submissions and add approved sources to the monitoring pipeline. </p>
+            <div class="ornament">
+                <span class="ornament-inner">✦ ✦ ✦</span>
+            </div>
+            <iframe data-tally-src="https://tally.so/embed/PdYvgV?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="566" frameborder="0" marginheight="0" marginwidth="0" title="Request Sites to be Added"></iframe>
+            <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+        </section>
+        <!-- SUPPORT / CROWDFUND -->
+        <section id="support" class="reveal">
+            <p class="section-label">Support the Project</p>
+            <h2>Crowdfunded, community-sustained</h2>
+            <div class="fund-layout">
+                <div>
+                    <p>
+          Burma News Archive was built entirely on the goodwill and generosity of its early supporters. There was no grant, no institution, no corporate backing — just people who believed that independent, open-access monitoring of Burma mattered enough to make it happen. </p>
+                    <p>
+          The initial crowdfunding campaign covered the development costs needed to get the platform off the ground. To everyone who contributed in those early days: <strong style="color:var(--amber)">this archive exists because of you.</strong> <span class="heart">♥</span> </p>
+                    <div class="thanks-block reveal" style="margin: 2rem 0;">
+                        <h3>"To our founding supporters —"</h3>
+                        <p>Thank you for your contributions!</p>
+                    </div>
+                    <p>
+          Running the archive has ongoing costs. Servers, bandwidth, API access for translation services, and the time needed to maintain and moderate the platform don't disappear after launch. If this resource is useful to you, please consider contributing — even a small amount helps keep the lights on. </p>
+                    <div class="fund-card reveal" style="margin-top: 1.5rem;">
+                        <h3>Ongoing running costs (approximate / monthly)</h3>
+                        <ul class="cost-list">
+                            <li>
+                                <span>VPS / Server hosting</span>
+                                <span class="cost-val">~$20–40</span>
+                            </li>
+                            <li>
+                                <span>Translation API access</span>
+                                <span class="cost-val">~$15–30</span>
+                            </li>
+                            <li>
+                                <span>Domain & SSL</span>
+                                <span class="cost-val">~$2</span>
+                            </li>
+                            <li>
+                                <span>Backup & storage</span>
+                                <span class="cost-val">~$5–10</span>
+                            </li>
+                            <li>
+                                <span>Maintenance time</span>
+                                <span class="cost-val">Volunteer</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="donate-stack">
+                        <p class="section-label" style="margin-bottom: 0.5rem;">Buy us a coffee</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">The quickest way to help — even a single coffee goes directly towards the monthly server bill.</p>
+                        <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener" class="btn btn-coffee">☕ Buy a Coffee</a>
+                        <div class="ornament">
+                            <span class="ornament-inner">or</span>
+                        </div>
+                        <p class="section-label" style="margin-bottom: 0.5rem;">One-off or recurring donation</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Support us via Ko-fi or PayPal — choose your own amount, once or monthly.</p>
+                        <a href="https://ko-fi.com/" target="_blank" rel="noopener" class="btn btn-outline">♥ Donate via Ko-fi</a>
+                        <a href="https://paypal.com/" target="_blank" rel="noopener" class="btn btn-outline">$ Donate via GOFUNDME</a>
+                        <div class="ornament">
+                            <span class="ornament-inner">✦</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--muted);">
+            All donations go entirely to running costs. This project has no paid staff. If you represent an organisation and would like to discuss ongoing support, <a href="mailto:burmanews@proton.me" style="color:var(--gold)">get in touch</a>. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FOOTER -->
+        <footer>
+            <div>
+                <div class="footer-logo">Burma News Archive</div>
+                <p style="margin-top:0.5rem;">An HMA Project initiative &mdash; independent, open-access, community-powered.</p>
+            </div>
+            <div style="text-align:right;">
+                <p><a href="#about">About</a> · <a href="https://news.burma-news.org/">Archive</a> ·  · <a href="#support">Support</a></p>
+                <p style="margin-top:0.4rem;">&copy; <span id="yr"></span> HMA Project. Content remains property of original sources.</p>
+            </div>
+        </footer>
+        <script>
+    // Year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => io.observe(el));
+
+    // Form submit handler (client-side demo; replace with your backend action)
+    document.getElementById('feedForm').addEventListener('submit', function(e) {
+      // Comment out the line below when you wire up a real backend endpoint
+      e.preventDefault();
+      document.getElementById('successMsg').style.display = 'block';
+      this.reset();
+      setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 6000);
+    });
+  </script>
+    </body>
+</html>
